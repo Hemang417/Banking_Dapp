@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:web3dart/web3dart.dart';
 
@@ -32,10 +33,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Client httpClient;
-  // Web3Client ethClient;
+  late Client httpClient;
+  late Web3Client ethClient;
 
   final myAdress = '0x4463A5D91fD8Fc0257157663E09285390D124165';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
