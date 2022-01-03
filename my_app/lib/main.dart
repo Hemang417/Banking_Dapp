@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:web3dart/web3dart.dart';
+import 'slider_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
   late Client httpClient;
   late Web3Client ethClient;
   bool data = false;
+  int myAmount = 0;
   final myAdress = '0x4463A5D91fD8Fc0257157663E09285390D124165';
+  double _currentSliderValue = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +69,18 @@ class _MyHomePageState extends State<MyHomePage> {
               .shadowXl
               .make()
               .p16(),
+          30.heightBox,
+          Slider(
+            value: _currentSliderValue,
+            max: 100,
+            divisions: 5,
+            label: _currentSliderValue.round().toString(),
+            onChanged: (double value) {
+              setState(() {
+                _currentSliderValue = value;
+              });
+            },
+          ),
           HStack(
             [
               ElevatedButton.icon(
